@@ -9,9 +9,13 @@
   <table class="table table-striped table-sm">
     <thead>
       <tr>
-        <th>#</th>
+        <th>ID</th>
         <th>Name</th>
-        <th></th>
+        <th>Description</th>
+        <th>Kind</th>
+        <th>User</th>
+        <th>Owner</th>
+        <th>Actions</th>
       </tr>
     </thead>
     <tbody>
@@ -19,13 +23,15 @@
         <tr>
           <td><%= widget.id %></td>
           <td><%= widget.name %></td>
-          <td><%= link_to 'Show', widget %></td>
-          <td><%= link_to 'Edit', edit_widget_path(widget) %></td>
-          <td><%= link_to 'Destroy', widget, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+          <td><%= widget.description %></td>
+          <td><%= widget.kind %></td>
+          <td><%= image_tag widget.user.images["small_url"], style: "max-height: 25px; border-radius: 50px;" %> <%= link_to widget.user.name, user_path(widget.user.id) %></td>
+          <td><%= widget.owner %></td>
+          <td><%= link_to 'Show', widget_path(widget.id), class: "btn btn-sm btn-primary" %>&nbsp;&nbsp;<%= link_to 'Edit', edit_widget_path(widget.id), class: "btn btn-sm btn-warning" %>&nbsp;&nbsp;<%= link_to 'Destroy', widget_path(widget.id), class: "btn btn-sm btn-danger", method: :delete, data: { confirm: 'Are you sure?' } %></td>
         </tr>
       <% end %>
     </tbody>
   </table>
 </div>
 
-<%= link_to 'Add a new widget', new_widget_path %>
+<%= link_to 'Add a new widget', new_widget_path, class: "btn btn-sm btn-primary" %>
