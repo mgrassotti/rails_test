@@ -1,25 +1,6 @@
 class WidgetsApiClient < ApiClient
-  def self.all
-    self.new.all
-  end
-
-  def self.destroy(id)
-    self.new.destroy(id)
-  end
-
-  def self.root_url
-    self.new.root_url
-  end
-
-  def self.get(path, params)
-    super(root_url + path, params)
-  end
-  def self.delete(path, params)
-    super(root_url + path, params)
-  end
-
-  def root_url
-    api_url + "/api/v1/widgets"
+  def self.api_url
+    "/api/v1/widgets"
   end
 
   def all
@@ -48,7 +29,7 @@ class WidgetsApiClient < ApiClient
 
 private
   def params
-    query.merge(headers)
+    access_token ? query.merge(auth_headers) : query
   end
 
   def query
@@ -58,25 +39,5 @@ private
         client_secret: credentials[:client_secret]
       }
     }
-  end
-
-  def headers
-    {
-      headers: {
-        "Authorization" => "Bearer #{access_token}"
-      }
-    }
-  end
-
-  def api_request(method, path, params={}, data_object)
-    response = HTTParty.send method, root_url + path, params
-    if response.code == 200
-      JSON.parse(response.body)["data"][data_object]
-    elsif response.code == 401
-      refresh_access_token
-      api_request(method, path, params, data_object)
-    else
-      raise ApiConnectionError, "#{response.code} - #{response.message}"
-    end
   end
 end

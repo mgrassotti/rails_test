@@ -11,7 +11,7 @@ class Widget < ModelFromApi
   end
 
   def destroy
-    result = WidgetsApiClient.destroy(id)
+    result = WidgetsApiClient.new(access_token).destroy(id)
     if result[:status] == "ok"
       @error_message = nil
       true

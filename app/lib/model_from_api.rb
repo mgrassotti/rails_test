@@ -8,8 +8,8 @@ class ModelFromApi
     end
   end
 
-  def self.all
-    "#{name.to_s.pluralize}ApiClient".constantize.all.map do |hash|
+  def self.all(access_token)
+    "#{name.to_s.pluralize}ApiClient".constantize.all(access_token).map do |hash|
       self.new(hash)
     end
   end

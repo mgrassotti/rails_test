@@ -3,7 +3,15 @@
   <input class="form-control form-control-dark w-100" type="text" placeholder="Search" aria-label="Search">
   <ul class="navbar-nav px-3">
     <li class="nav-item text-nowrap">
-      <a class="nav-link" href="#">Sign in</a>
+      <% if current_access %>
+        <%= link_to "Sign out", sign_out_path, method: :delete, class: "nav-link" %>
+      <% else %>
+        <a type="button" class="nav-link" data-toggle="modal" data-target="#signInModal">
+          Sign in
+        </a>
+      <% end %>
     </li>
   </ul>
 </nav>
+
+<%= render partial: 'shared/sign_in_modal' %>

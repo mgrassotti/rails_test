@@ -1,54 +1,62 @@
 class ApiClient
   class ApiConnectionError < StandardError; end
   include HTTParty
+  attr_reader :access_token
 
-private
-  def api_url
+  def initialize(access_token=nil)
+    @access_token = access_token
+  end
+
+  def self.all(access_token=nil)
+    self.new(access_token).all
+  end
+
+  def self.destroy(id:, access_token:)
+    self.new(access_token).destroy(id)
+  end
+
+  def self.root_url
+    self.new.root_url
+  end
+
+  def self.new_access_token(username, password)
+    self.new.new_access_token(username, password)
+  end
+
+  def self.refresh_access_token(refresh_token)
+    self.new.refresh_access_token(refresh_token)
+  end
+
+  def self.revoke_access_token
+    self.new.revoke_access_token
+  end
+
+  def self.get(path, params)
+    super(root_url + api_url + path, params)
+  end
+
+  def self.post(path, params)
+    super(root_url + api_url + path, params)
+  end
+
+  def self.delete(path, params)
+    super(root_url + api_url + path, params)
+  end
+
+  def root_url
     Rails.configuration.external_api[:url]
   end
 
+private
   def credentials
     Rails.application.credentials.widget_api
   end
 
-  def access_token
-    @access_token ||= get_new_access_token
-  end
-
-  def get_new_access_token
-    response = ApiClient.post(
-      api_url + "/oauth/token",
-      body: {
-        "grant_type": "password",
-        "client_id": credentials[:client_id],
-        "client_secret": credentials[:client_secret],
-        "username": "michael1234@showoff.ie",
-        "password": "password"
+  def auth_headers
+    {
+      headers: {
+        "Authorization" => "Bearer #{access_token}"
       }
-    )
-    if response.code == 200
-      @access_token = response["data"]["access_token"]
-      @refresh_token = response["data"]["refresh_token"]
-    else
-      raise ApiConnectionError, "#{response.code} - #{response.message}"
-    end
-  end
-
-  def refresh_access_token
-    response = ApiClient.post(
-      api_url + "/oauth/token",
-      body: {
-        "grant_type": "refresh_token",
-        "refresh_token": @refresh_token,
-        "client_id": credentials[:client_id],
-        "client_secret": credentials[:client_secret]
-      }
-    )
-    if response.code == 200
-      @access_token = response["data"]["access_token"]
-      @refresh_token = response["data"]["refresh_token"]
-    else
-      raise ApiConnectionError, "#{response.code} - #{response.message}"
-    end
+    }
   end
 end
