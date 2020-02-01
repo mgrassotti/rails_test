@@ -27,6 +27,7 @@
         <%= render 'shared/sidebar' %>
 
         <main role="main" class="col-md-9 ml-sm-auto col-lg-10 px-4">
+          <%= render partial: 'shared/flash_messages' %>
           <%= yield %>
         </main>
       </div>

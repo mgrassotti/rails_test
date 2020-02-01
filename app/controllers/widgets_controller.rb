@@ -54,11 +54,12 @@ class WidgetsController < ApplicationController
   # DELETE /widgets/1
   # DELETE /widgets/1.json
   def destroy
-    @widget.destroy
-    respond_to do |format|
-      format.html { redirect_to widgets_url, notice: 'Widget was successfully destroyed.' }
-      format.json { head :no_content }
+    notification = if @widget.destroy
+      { notice: 'Widget was successfully destroyed.' }
+    else
+      { alert: @widget.error_message }
     end
+    redirect_to widgets_url, notification
   end
 
   private

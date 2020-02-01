@@ -1,5 +1,6 @@
 class ApiClient
   class ApiConnectionError < StandardError; end
+  include HTTParty
 
 private
   def api_url
@@ -15,7 +16,7 @@ private
   end
 
   def get_new_access_token
-    response = HTTParty.post(
+    response = ApiClient.post(
       api_url + "/oauth/token",
       body: {
         "grant_type": "password",
@@ -34,7 +35,7 @@ private
   end
 
   def refresh_access_token
-    response = HTTParty.post(
+    response = ApiClient.post(
       api_url + "/oauth/token",
       body: {
         "grant_type": "refresh_token",
