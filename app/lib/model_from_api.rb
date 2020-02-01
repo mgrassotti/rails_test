@@ -7,11 +7,5 @@ class ModelFromApi
       end
     end
   end
-
-  def self.all(access_token)
-    "#{name.to_s.pluralize}ApiClient".constantize.all(access_token).map do |hash|
-      self.new(hash)
-    end
-  end
 end
 

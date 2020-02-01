@@ -3,8 +3,10 @@ class WidgetsApiClient < ApiClient
     "/api/v1/widgets"
   end
 
-  def all
-    response = WidgetsApiClient.get '/visible', params
+  def search(q=nil)
+    search_params = params.dup
+    search_params[:query][:term] = q if q.present?
+    response = WidgetsApiClient.get '/visible', search_params
     if response.code == 200
       JSON.parse(response.body)["data"]['widgets']
     elsif response.code == 401

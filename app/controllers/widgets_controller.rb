@@ -4,7 +4,7 @@ class WidgetsController < ApplicationController
   # GET /widgets
   # GET /widgets.json
   def index
-    @widgets = Widget.all current_access_token
+    @widgets = Widget.search(current_access_token, params[:q])
   end
 
   # GET /widgets/1

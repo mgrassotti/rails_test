@@ -7,8 +7,8 @@ class ApiClient
     @access_token = access_token
   end
 
-  def self.all(access_token=nil)
-    self.new(access_token).all
+  def self.search(access_token=nil, q=nil)
+    self.new(access_token).search(q)
   end
 
   def self.destroy(id:, access_token:)

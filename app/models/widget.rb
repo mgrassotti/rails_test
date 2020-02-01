@@ -6,6 +6,12 @@ class Widget < ModelFromApi
     self.new({ id: id })
   end
 
+  def self.search(access_token, q)
+    WidgetsApiClient.search(access_token, q).map do |hash|
+      self.new(hash)
+    end
+  end
+
   def user
     User.new @attributes_hash["user"]
   end
