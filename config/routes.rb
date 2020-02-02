@@ -1,6 +1,10 @@
 Rails.application.routes.draw do
   root "widgets#index"
-  resources :widgets
+  resources :widgets do
+    collection do
+      get 'mine'
+    end
+  end
   resources :users do
     collection do
       post 'reset_password'

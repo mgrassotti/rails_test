@@ -37,8 +37,8 @@ class User < ModelFromApi
     end
   end
 
-  def widgets(access=nil)
-    response = UsersApiClient.new(access).widgets(id)
+  def widgets(access=nil, q=nil)
+    response = UsersApiClient.new(access).widgets(id, q)
     if response[:status] == "ok"
       response[:data]["widgets"].map { |w| Widget.new(w) }
     else

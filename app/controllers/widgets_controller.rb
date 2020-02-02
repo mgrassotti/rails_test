@@ -7,6 +7,10 @@ class WidgetsController < ApplicationController
     @widgets = Widget.search(current_access_token, params[:q])
   end
 
+  def mine
+    @widgets = current_user.widgets(current_access, params[:q])
+  end
+
   # GET /widgets/1
   # GET /widgets/1.json
   def show

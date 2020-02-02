@@ -2,9 +2,13 @@
   <div class="sidebar-sticky">
     <ul class="nav flex-column">
       <li class="nav-item">
-        <a class="nav-link<%= ' active' if controller_name == "widgets" %>" href="/widgets">
+        <a class="nav-link<%= ' active' if controller_name == "widgets" && action_name == "index" %>" href="/widgets">
           <span data-feather="home"></span>
-          Widgets <span class="sr-only">(current)</span>
+          Widgets (all)<span class="sr-only">(current)</span>
+        </a>
+        <a class="nav-link<%= ' active' if controller_name == "widgets" && action_name == "mine" %>" href="/widgets/mine">
+          <span data-feather="home"></span>
+          Widgets (mine)<span class="sr-only">(current)</span>
         </a>
         <a class="nav-link<%= ' active' if controller_name == "users" %>" href="/users">
           <span data-feather="home"></span>

@@ -23,9 +23,10 @@ class UsersApiClient < ApiClient
     parse_response self.class.get("/#{id}", auth_headers)
   end
 
-  def widgets(id)
-    parse_response self.class.get("/#{id}/widgets",
-      credentials_params.merge(auth_headers))
+  def widgets(id, q=nil)
+    params = credentials_params.merge(auth_headers)
+    params = params.merge(query: { term: q }) if q.present?
+    parse_response self.class.get("/#{id}/widgets", params)
   end
 
   def create(user)

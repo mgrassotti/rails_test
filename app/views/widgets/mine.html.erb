@@ -1,0 +1,8 @@
+<div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center mb-3 border-bottom">
+  <p><strong>Home / Widgets /</strong> mine</p>
+</div>
+
+<h2>My Widgets</h2>
+<%= render partial: "table", locals: { widgets: @widgets } %>
+
+<%= link_to 'Add a new widget', new_widget_path, class: "btn btn-sm btn-primary" %>
