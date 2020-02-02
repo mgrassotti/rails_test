@@ -3,6 +3,14 @@ class WidgetsApiClient < ApiClient
     "/api/v1/widgets"
   end
 
+  def self.search(access_token=nil, q=nil)
+    self.new(access_token).search(q)
+  end
+
+  def self.destroy(id:, access_token:)
+    self.new(access_token).destroy(id)
+  end
+
   def search(q=nil)
     search_params = params.dup
     search_params[:query][:term] = q if q.present?
@@ -25,7 +33,7 @@ class WidgetsApiClient < ApiClient
       refresh_access_token
       destroy(id)
     else
-      { status: "error" , message: "#{response.code} - #{response.message}" }
+      { status: "error - #{response.code}", message: response["message"] }
     end
   end
 

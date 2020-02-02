@@ -3,6 +3,18 @@ class AccessesApiClient < ApiClient
     "/oauth"
   end
 
+  def self.new_access_token(username, password)
+    self.new.new_access_token(username, password)
+  end
+
+  def self.refresh_access_token(refresh_token)
+    self.new.refresh_access_token(refresh_token)
+  end
+
+  def self.revoke_access_token
+    self.new.revoke_access_token
+  end
+
   def new_access_token(username, password)
     parse_response self.class.post("/token",
       body: {
@@ -62,8 +74,8 @@ private
       }
     else
       {
-        status: "error",
-        message: "#{response.code} - #{response.message}"
+        status: "error - #{response.code}",
+        message: response["message"]
       }
     end
   end
