@@ -1,6 +1,15 @@
 class User < ModelFromApi
-  ATTRIBUTES = %w(id name images first_name last_name email)
+  ATTRIBUTES = %w(id name images image_url first_name last_name email)
   attr_reader :error_message
+
+  def self.find(access=nil, id)
+    response = UsersApiClient.new(access).find(id)
+    if response[:status] == "ok"
+      { status: "ok", data: self.new(response[:data]["user"])}
+    else
+      { status: response[:status], error_message: response[:message] }
+    end
+  end
 
   def save
     response = UsersApiClient.create(self)
@@ -21,5 +30,9 @@ class User < ModelFromApi
       @error_message = response[:message]
       false
     end
+  end
+
+  def widgets(access=nil)
+    Widget.all(access&.access_token)
   end
 end

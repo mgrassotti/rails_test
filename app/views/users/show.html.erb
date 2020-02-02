@@ -1,0 +1,42 @@
+<div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center mb-3 border-bottom">
+  <p><strong>Home / Users /</strong> <%= @user.id %></p>
+</div>
+
+<h2>User - <%= @user.name %></h2>
+<ul>
+  <li><strong>ID</strong>: <%= @user.id %></li>
+  <li><strong>Name</strong>: <%= @user.name %></li>
+  <li><strong>First Name</strong>: <%= @user.first_name %></li>
+  <li><strong>Last Name</strong>: <%= @user.last_name %></li>
+  <li><strong>Image</strong>: <%= image_tag @user.images["small_url"] %></li>
+</ul>
+
+<h2>User Widgets</h2>
+<div class="table-responsive">
+  <table class="table table-striped table-sm">
+    <thead>
+      <tr>
+        <th>ID</th>
+        <th>Name</th>
+        <th>Description</th>
+        <th>Kind</th>
+        <th>User</th>
+        <th>Owner</th>
+        <th>Actions</th>
+      </tr>
+    </thead>
+    <tbody>
+      <% @user.widgets(current_access).each do |widget| %>
+        <tr>
+          <td><%= widget.id %></td>
+          <td><%= widget.name %></td>
+          <td><%= widget.description %></td>
+          <td><%= widget.kind %></td>
+          <td><%= image_tag widget.user.images["small_url"], style: "max-height: 25px; border-radius: 50px;" %> <%= link_to widget.user.name, user_path(widget.user.id) %></td>
+          <td><%= widget.owner %></td>
+          <td><%= link_to 'Edit', edit_widget_path(widget.id), class: "btn btn-sm btn-warning" %>&nbsp;&nbsp;<%= link_to 'Delete', widget_path(widget.id), class: "btn btn-sm btn-danger", method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
+</div>

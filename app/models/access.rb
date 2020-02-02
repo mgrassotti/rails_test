@@ -11,7 +11,7 @@ class Access < ModelFromApi
   end
 
   def access_token
-    token_data && token_data[:refresh_token]
+    token_data && token_data[:access_token]
   end
 
   def refresh_token
@@ -20,11 +20,17 @@ class Access < ModelFromApi
 
   def save
     if token_data
-      expired? ? refresh_access_token : true
+      expired? ? refresh_token && refresh_access_token : true
     else
-      get_new_access_token
+      email.present? && password.present? && get_new_access_token
     end
   end
+  alias_method :login, :save
+
+  def save!
+    save || raise(@error_message)
+  end
+  alias_method :login!, :save!
 
   def destroy
     AccessesApiClient.revoke_access_token

@@ -2,6 +2,10 @@ class Widget < ModelFromApi
   ATTRIBUTES = %w(id name description kind owner)
   attr_reader :error_message
 
+  def self.all(access_token)
+    search(access_token, nil)
+  end
+
   def self.find(id)
     self.new({ id: id })
   end

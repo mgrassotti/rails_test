@@ -1,4 +1,6 @@
 class UsersController < ApplicationController
+  before_action :check_logged_in, only: [:show]
+
   def create
     @user = User.new(user_params)
     if @user.save
@@ -7,6 +9,15 @@ class UsersController < ApplicationController
     else
       redirect_to root_path,
         alert: "User creation failed: #{@user.error_message}."
+    end
+  end
+
+  def show
+    result = User.find current_access, params[:id]
+    if result[:status] == "ok"
+      @user = result[:data]
+    else
+      redirect_to root_path, alert: result[:error_message]
     end
   end
 

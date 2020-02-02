@@ -11,39 +11,36 @@ class UsersApiClient < ApiClient
     self.new.reset_password(user)
   end
 
+  def find(id)
+    parse_response(self.class.get("/#{id}", auth_headers))
+  end
+
   def create(user)
-    response = self.class.post("/",
+    parse_response self.class.post("/",
       body: {
         "client_id": credentials[:client_id],
         "client_secret": credentials[:client_secret],
         "user": user.to_h
       }
     )
-    if response.code == 200
-      {
-        status: "ok",
-        data: response["data"]
-      }
-    else
-      {
-        status: "error - #{response.code}",
-        message: response["message"]
-      }
-    end
   end
 
   def reset_password(user)
-    response = self.class.post("/reset_password",
+    parse_response self.class.post("/reset_password",
       body: {
         "client_id": credentials[:client_id],
         "client_secret": credentials[:client_secret],
         "user": { email: user.email }
       }
     )
+  end
+
+private
+  def parse_response(response)
     if response.code == 200
       {
         status: "ok",
-        data: response["message"]
+        data: response["data"]
       }
     else
       {

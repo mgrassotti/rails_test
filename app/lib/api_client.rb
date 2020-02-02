@@ -3,8 +3,8 @@ class ApiClient
   include HTTParty
   attr_reader :access_token
 
-  def initialize(access_token=nil)
-    @access_token = access_token
+  def initialize(access=nil)
+    @access = access
   end
 
   def self.root_url
@@ -35,7 +35,7 @@ private
   def auth_headers
     {
       headers: {
-        "Authorization" => "Bearer #{access_token}"
+        "Authorization" => "Bearer #{@access.access_token}"
       }
     }
   end
