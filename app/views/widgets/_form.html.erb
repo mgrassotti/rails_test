@@ -1,17 +1,24 @@
-<%= form_with(model: widget, local: true) do |form| %>
-  <% if widget.errors.any? %>
-    <div id="error_explanation">
-      <h2><%= pluralize(widget.errors.count, "error") %> prohibited this widget from being saved:</h2>
-
-      <ul>
-      <% widget.errors.full_messages.each do |message| %>
-        <li><%= message %></li>
-      <% end %>
-      </ul>
+<%= form_for :widget, url: "/widgets/" do |f| %>
+  <div class="row">
+    <div class="col-md-6">
+      <div class="form-group">
+        <label for="name">Name</label>
+        <%= f.text_field :name, class: "form-control" %>
+      </div>
+      <div class="form-group">
+        <label for="description">Description</label>
+        <%= f.text_field :description, class: "form-control" %>
+      </div>
+      <div class="form-group">
+        <label for="kind">Kind</label>
+        <%= f.select :kind, ['visible','hidden'], {}, class: "form-control" %>
+      </div>
     </div>
-  <% end %>
-
-  <div class="actions">
-    <%= form.submit %>
+  </div>
+  <div class="row">
+    <div class="col-md-12">
+      <button type="submit" class="btn btn-primary">Submit</button>
+      <%= link_to 'Back', mine_widgets_path, class: "btn btn-default" %>
+    </div>
   </div>
 <% end %>

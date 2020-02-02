@@ -16,6 +16,17 @@ class Widget < ModelFromApi
     end
   end
 
+  def save(access)
+    result = WidgetsApiClient.create(access, self)
+    if result[:status] == "ok"
+      @error_message = nil
+      true
+    else
+      @error_message = result[:message]
+      false
+    end
+  end
+
   def user
     User.new @attributes_hash["user"]
   end
