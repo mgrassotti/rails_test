@@ -32,6 +32,15 @@ private
     Rails.application.credentials.widget_api
   end
 
+  def credentials_params
+    {
+      query: {
+        "client_id": credentials[:client_id],
+        "client_secret": credentials[:client_secret]
+      }
+    }
+  end
+
   def auth_headers
     {
       headers: {

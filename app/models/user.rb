@@ -11,6 +11,11 @@ class User < ModelFromApi
     end
   end
 
+  def self.me(access=nil)
+    return nil unless access && access.logged_in?
+    new UsersApiClient.me(access)[:data]["user"]
+  end
+
   def save
     response = UsersApiClient.create(self)
     if response[:status] == "ok"
@@ -33,6 +38,12 @@ class User < ModelFromApi
   end
 
   def widgets(access=nil)
-    Widget.all(access&.access_token)
+    response = UsersApiClient.new(access).widgets(id)
+    if response[:status] == "ok"
+      response[:data]["widgets"].map { |w| Widget.new(w) }
+    else
+      @error_message = response[:message]
+      []
+    end
   end
 end

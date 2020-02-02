@@ -14,10 +14,14 @@ class ApplicationController < ActionController::Base
     end
   end
   alias_method :current_access, :current_login
-  helper_method :current_login, :current_access
+  helper_method :current_login, :current_access, :current_user
 
   def current_access_token
     current_login.try(:access_token)
+  end
+
+  def current_user
+    User.me(current_access)
   end
 
 private

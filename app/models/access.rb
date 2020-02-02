@@ -36,6 +36,10 @@ class Access < ModelFromApi
     AccessesApiClient.revoke_access_token
   end
 
+  def logged_in?
+    !!access_token
+  end
+
 private
   def expired?
     Time.now > token_data[:expires_at]
