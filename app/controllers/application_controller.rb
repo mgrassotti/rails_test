@@ -1,6 +1,6 @@
 class ApplicationController < ActionController::Base
   def current_login
-    if session[:current_logged_email]
+    @current_login ||= if session[:current_logged_email]
       access = Access.new email: session[:current_logged_email]
       if access.token_data
         access
@@ -21,7 +21,7 @@ class ApplicationController < ActionController::Base
   end
 
   def current_user
-    User.me(current_access)
+    @current_user ||= User.me(current_access)
   end
 
 private
