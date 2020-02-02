@@ -29,8 +29,8 @@ class Widget < ModelFromApi
     User.new @attributes_hash["user"]
   end
 
-  def destroy
-    parse_response WidgetsApiClient.new(access_token).destroy(id)
+  def destroy(access)
+    parse_response WidgetsApiClient.new(access).destroy(id)
   end
 
 private

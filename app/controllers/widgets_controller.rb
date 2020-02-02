@@ -52,12 +52,12 @@ class WidgetsController < ApplicationController
   # DELETE /widgets/1
   # DELETE /widgets/1.json
   def destroy
-    notification = if @widget.destroy
+    notification = if @widget.destroy(current_access)
       { notice: 'Widget was successfully destroyed.' }
     else
       { alert: @widget.error_message }
     end
-    redirect_to widgets_url, notification
+    redirect_to mine_widgets_path, notification
   end
 
   private
