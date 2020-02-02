@@ -15,40 +15,34 @@ class WidgetsApiClient < ApiClient
     self.new(access).create(widget)
   end
 
+  def self.update(access=nil, id, params)
+    self.new(access).update(id, params)
+  end
+
   def search(q=nil)
     search_params = params.dup
     search_params[:query][:term] = q if q.present?
     response = WidgetsApiClient.get '/visible', search_params
     if response.code == 200
       JSON.parse(response.body)["data"]['widgets']
-    elsif response.code == 401
-      refresh_access_token
-      all
     else
       raise ApiConnectionError, "#{response.code} - #{response.message}"
     end
   end
 
   def create(widget)
-    response = WidgetsApiClient.post "/", body: { widget: widget.to_h },
+    parse_response WidgetsApiClient.post "/", body: { widget: widget.to_h },
       headers: auth_headers[:headers]
-    if response.code == 200
-      { status: "ok", data: response["data"] }
-    else
-      { status: "error - #{response.code}", message: response["message"] }
-    end
+  end
+
+  def update(id, params)
+    parse_response WidgetsApiClient.put "/#{id}",
+      body: { widget: params },
+      headers: auth_headers[:headers]
   end
 
   def destroy(id)
-    response = WidgetsApiClient.delete "/#{id}", auth_headers
-    if response.code == 200
-      { status: "ok", message: "ok" }
-    elsif response.code == 401
-      refresh_access_token
-      destroy(id)
-    else
-      { status: "error - #{response.code}", message: response["message"] }
-    end
+    parse_response WidgetsApiClient.delete "/#{id}", auth_headers
   end
 
 private

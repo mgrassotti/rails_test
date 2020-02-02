@@ -44,19 +44,4 @@ class UsersApiClient < ApiClient
       })
     )
   end
-
-private
-  def parse_response(response)
-    if response.code == 200
-      {
-        status: "ok",
-        data: response["data"]
-      }
-    else
-      {
-        status: "error - #{response.code}",
-        message: response["message"]
-      }
-    end
-  end
 end

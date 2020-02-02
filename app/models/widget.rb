@@ -6,8 +6,9 @@ class Widget < ModelFromApi
     search(access_token, nil)
   end
 
-  def self.find(id)
-    self.new({ id: id })
+  def self.find(current_user, access, id)
+    current_user.widgets(access).select{|w| w.id == id.to_i}.first ||
+      raise("Could not find a widget with id #{id}")
   end
 
   def self.search(access_token, q)
@@ -17,14 +18,11 @@ class Widget < ModelFromApi
   end
 
   def save(access)
-    result = WidgetsApiClient.create(access, self)
-    if result[:status] == "ok"
-      @error_message = nil
-      true
-    else
-      @error_message = result[:message]
-      false
-    end
+    parse_response WidgetsApiClient.create(access, self)
+  end
+
+  def update(access, params)
+    parse_response WidgetsApiClient.update(access, self.id, params.to_h)
   end
 
   def user
@@ -32,12 +30,16 @@ class Widget < ModelFromApi
   end
 
   def destroy
-    result = WidgetsApiClient.new(access_token).destroy(id)
-    if result[:status] == "ok"
+    parse_response WidgetsApiClient.new(access_token).destroy(id)
+  end
+
+private
+  def parse_response(response)
+    if response[:status] == "ok"
       @error_message = nil
       true
     else
-      @error_message = result[:message]
+      @error_message = response[:message]
       false
     end
   end

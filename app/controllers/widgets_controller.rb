@@ -41,14 +41,11 @@ class WidgetsController < ApplicationController
   # PATCH/PUT /widgets/1
   # PATCH/PUT /widgets/1.json
   def update
-    respond_to do |format|
-      if @widget.update(widget_params)
-        format.html { redirect_to @widget, notice: 'Widget was successfully updated.' }
-        format.json { render :show, status: :ok, location: @widget }
-      else
-        format.html { render :edit }
-        format.json { render json: @widget.errors, status: :unprocessable_entity }
-      end
+    if @widget.update(current_access, widget_params)
+      redirect_to mine_widgets_path, notice: 'Widget was successfully updated.'
+    else
+      flash[:alert] = @widget.error_message
+      render :edit
     end
   end
 
@@ -66,7 +63,7 @@ class WidgetsController < ApplicationController
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_widget
-      @widget = Widget.find(params[:id])
+      @widget = Widget.find(current_user, current_access, params[:id])
     end
 
     # Never trust parameters from the scary internet, only allow the white list through.

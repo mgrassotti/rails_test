@@ -19,6 +19,10 @@ class ApiClient
     super(root_url + api_url + path, params)
   end
 
+  def self.put(path, params)
+    super(root_url + api_url + path, params)
+  end
+
   def self.delete(path, params)
     super(root_url + api_url + path, params)
   end
@@ -47,5 +51,20 @@ private
         "Authorization" => "Bearer #{@access.access_token}"
       }
     }
+  end
+
+private
+  def parse_response(response)
+    if response.code == 200
+      {
+        status: "ok",
+        data: response["data"]
+      }
+    else
+      {
+        status: "error - #{response.code}",
+        message: response["message"] || "#{response.code} - An error occurred"
+      }
+    end
   end
 end
