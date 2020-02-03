@@ -1,4 +1,5 @@
 class WidgetsController < ApplicationController
+  before_action :check_logged_in, except: [:index]
   before_action :set_widget, only: [:show, :edit, :update, :destroy]
 
   # GET /widgets
@@ -9,11 +10,6 @@ class WidgetsController < ApplicationController
 
   def mine
     @widgets = current_user.widgets(current_access, params[:q])
-  end
-
-  # GET /widgets/1
-  # GET /widgets/1.json
-  def show
   end
 
   # GET /widgets/new
