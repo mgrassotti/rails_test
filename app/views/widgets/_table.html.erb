@@ -21,7 +21,7 @@
             <td><%= widget.kind %></td>
             <td><%= image_tag widget.user.images["small_url"], style: "max-height: 25px; border-radius: 50px;" %> <%= link_to widget.user.name, user_path(widget.user.id) %></td>
             <td><%= widget.owner %></td>
-            <td><% if widget.user.id == current_user.id %><%= link_to 'Edit', edit_widget_path(widget.id), class: "btn btn-sm btn-warning" %>&nbsp;&nbsp;<%= link_to 'Delete', widget_path(widget.id), class: "btn btn-sm btn-danger", method: :delete, data: { confirm: 'Are you sure?' } %><%end %></td>
+            <td><% if widget.user.id == current_user&.id %><%= link_to 'Edit', edit_widget_path(widget.id), class: "btn btn-sm btn-warning" %>&nbsp;&nbsp;<%= link_to 'Delete', widget_path(widget.id), class: "btn btn-sm btn-danger", method: :delete, data: { confirm: 'Are you sure?' } %><%end %></td>
           </tr>
         <% end %>
       </tbody>
