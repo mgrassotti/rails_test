@@ -30,7 +30,7 @@ $ heroku create <heroku_app_name>
 $ git push heroku
 $ heroku config:set RAILS_MASTER_KEY=<master-key>
 ```
-Add a Redis add-on, like `Heroku Redis`
+Add a the `MemCachier` add-on.
 
 ## Demo version
 
