@@ -11,8 +11,8 @@ class AccessesApiClient < ApiClient
     self.new.refresh_access_token(refresh_token)
   end
 
-  def self.revoke_access_token
-    self.new.revoke_access_token
+  def self.revoke_access_token(access)
+    self.new(access).revoke_access_token
   end
 
   def new_access_token(username, password)

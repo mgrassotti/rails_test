@@ -33,7 +33,7 @@ class Access < ModelFromApi
   alias_method :login!, :save!
 
   def destroy
-    AccessesApiClient.revoke_access_token
+    AccessesApiClient.revoke_access_token(self)
   end
 
   def logged_in?
