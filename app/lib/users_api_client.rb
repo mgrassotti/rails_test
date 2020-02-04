@@ -31,17 +31,21 @@ class UsersApiClient < ApiClient
 
   def create(user)
     parse_response self.class.post("/",
-      body: credentials_params.merge({
+      body: {
+        "client_id": credentials[:client_id],
+        "client_secret": credentials[:client_secret],
         "user": user.to_h
-      })
+      }
     )
   end
 
   def reset_password(user)
     parse_response self.class.post("/reset_password",
-      body: credentials_params.merge({
+      body: {
+        "client_id": credentials[:client_id],
+        "client_secret": credentials[:client_secret],
         "user": { email: user.email }
-      })
+      }
     )
   end
 end

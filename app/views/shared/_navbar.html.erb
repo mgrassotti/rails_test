@@ -8,9 +8,7 @@
       <% if current_access %>
         <%= link_to "Sign out", sign_out_path, method: :delete, class: "nav-link" %>
       <% else %>
-        <a type="button" class="nav-link" data-toggle="modal" data-target="#signInModal">
-          Sign in
-        </a>
+        <%= link_to "Sign in", "#" , type: "button", class: "nav-link", "data-toggle"=>"modal", "data-target"=>"#signInModal" %>
       <% end %>
     </li>
   </ul>

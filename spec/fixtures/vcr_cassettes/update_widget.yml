@@ -1,0 +1,246 @@
+---
+http_interactions:
+- request:
+    method: get
+    uri: https://showoff-rails-react-production.herokuapp.com/api/v1/users/me
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      Authorization:
+      - Bearer 820e809ca52f3653ecc262cfccdbf75309a3a28f0ca4be0bf6d9f18e1fcec14f
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Server:
+      - Cowboy
+      Date:
+      - Tue, 04 Feb 2020 09:41:41 GMT
+      Connection:
+      - keep-alive
+      X-Frame-Options:
+      - SAMEORIGIN
+      X-Xss-Protection:
+      - 1; mode=block
+      X-Content-Type-Options:
+      - nosniff
+      Content-Type:
+      - application/json; charset=utf-8
+      Vary:
+      - Accept-Encoding, Origin
+      Etag:
+      - W/"cb2ebdf17360b412337450c993fdd843"
+      Cache-Control:
+      - max-age=0, private, must-revalidate
+      X-Request-Id:
+      - a90fe511-725f-4f94-afff-2439bb14cd35
+      X-Runtime:
+      - '0.067777'
+      Transfer-Encoding:
+      - chunked
+      Via:
+      - 1.1 vegur
+    body:
+      encoding: UTF-8
+      string: '{"code":0,"message":"Success","data":{"user":{"id":1776,"name":"John12e34312
+        Doe123212e42","images":{"small_url":"https://showoff-rails-react-api-production.s3.amazonaws.com/users/images/missing/missing.jpg","medium_url":"https://showoff-rails-react-api-production.s3.amazonaws.com/users/images/missing/missing.jpg","large_url":"https://showoff-rails-react-api-production.s3.amazonaws.com/users/images/missing/missing.jpg","original_url":"https://showoff-rails-react-api-production.s3.amazonaws.com/users/images/missing/missing.jpg"},"first_name":"John12e34312","last_name":"Doe123212e42","date_of_birth":null,"email":"john.doe123124e22@email.com","active":true}}}'
+    http_version: 
+  recorded_at: Tue, 04 Feb 2020 09:41:41 GMT
+- request:
+    method: get
+    uri: https://showoff-rails-react-production.herokuapp.com/api/v1/users/1776/widgets?client_id=277ef29692f9a70d511415dc60592daf4cf2c6f6552d3e1b769924b2f2e2e6fe&client_secret=d6106f26e8ff5b749a606a1fba557f44eb3dca8f48596847770beb9b643ea352
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      Authorization:
+      - Bearer 820e809ca52f3653ecc262cfccdbf75309a3a28f0ca4be0bf6d9f18e1fcec14f
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Server:
+      - Cowboy
+      Date:
+      - Tue, 04 Feb 2020 09:41:41 GMT
+      Connection:
+      - keep-alive
+      X-Frame-Options:
+      - SAMEORIGIN
+      X-Xss-Protection:
+      - 1; mode=block
+      X-Content-Type-Options:
+      - nosniff
+      Content-Type:
+      - application/json; charset=utf-8
+      Vary:
+      - Accept-Encoding, Origin
+      Etag:
+      - W/"85fbdbff0b00696cbaa529afaadc688b"
+      Cache-Control:
+      - max-age=0, private, must-revalidate
+      X-Request-Id:
+      - 95da1a5e-f597-47f2-b24c-b6d5e71c9d05
+      X-Runtime:
+      - '0.070285'
+      Transfer-Encoding:
+      - chunked
+      Via:
+      - 1.1 vegur
+    body:
+      encoding: UTF-8
+      string: '{"code":0,"message":"Success","data":{"widgets":[{"id":887,"name":"Test
+        Widget","description":"Visible Widget","kind":"visible","user":{"id":1776,"name":"John12e34312
+        Doe123212e42","images":{"small_url":"https://showoff-rails-react-api-production.s3.amazonaws.com/users/images/missing/missing.jpg","medium_url":"https://showoff-rails-react-api-production.s3.amazonaws.com/users/images/missing/missing.jpg","large_url":"https://showoff-rails-react-api-production.s3.amazonaws.com/users/images/missing/missing.jpg","original_url":"https://showoff-rails-react-api-production.s3.amazonaws.com/users/images/missing/missing.jpg"},"first_name":"John12e34312","last_name":"Doe123212e42","date_of_birth":null,"email":"john.doe123124e22@email.com","active":true},"owner":true}]}}'
+    http_version: 
+  recorded_at: Tue, 04 Feb 2020 09:41:42 GMT
+- request:
+    method: put
+    uri: https://showoff-rails-react-production.herokuapp.com/api/v1/widgets/887
+    body:
+      encoding: UTF-8
+      string: widget[name]=Test%20edit%20Widget&widget[description]=Visible%20Widget&widget[kind]=visible
+    headers:
+      Authorization:
+      - Bearer 820e809ca52f3653ecc262cfccdbf75309a3a28f0ca4be0bf6d9f18e1fcec14f
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Server:
+      - Cowboy
+      Date:
+      - Tue, 04 Feb 2020 09:41:42 GMT
+      Connection:
+      - keep-alive
+      X-Frame-Options:
+      - SAMEORIGIN
+      X-Xss-Protection:
+      - 1; mode=block
+      X-Content-Type-Options:
+      - nosniff
+      Content-Type:
+      - application/json; charset=utf-8
+      Vary:
+      - Accept-Encoding, Origin
+      Etag:
+      - W/"da32fb1d7a973692e2801af74643983b"
+      Cache-Control:
+      - max-age=0, private, must-revalidate
+      X-Request-Id:
+      - 74735f62-4d78-4676-99c2-60712d6709ac
+      X-Runtime:
+      - '0.055188'
+      Transfer-Encoding:
+      - chunked
+      Via:
+      - 1.1 vegur
+    body:
+      encoding: UTF-8
+      string: '{"code":0,"message":"Success","data":{"widget":{"id":887,"name":"Test
+        edit Widget","description":"Visible Widget","kind":"visible","user":{"id":1776,"name":"John12e34312
+        Doe123212e42","images":{"small_url":"https://showoff-rails-react-api-production.s3.amazonaws.com/users/images/missing/missing.jpg","medium_url":"https://showoff-rails-react-api-production.s3.amazonaws.com/users/images/missing/missing.jpg","large_url":"https://showoff-rails-react-api-production.s3.amazonaws.com/users/images/missing/missing.jpg","original_url":"https://showoff-rails-react-api-production.s3.amazonaws.com/users/images/missing/missing.jpg"},"first_name":"John12e34312","last_name":"Doe123212e42","date_of_birth":null,"email":"john.doe123124e22@email.com","active":true},"owner":true}}}'
+    http_version: 
+  recorded_at: Tue, 04 Feb 2020 09:41:42 GMT
+- request:
+    method: get
+    uri: https://showoff-rails-react-production.herokuapp.com/api/v1/users/me
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      Authorization:
+      - Bearer 820e809ca52f3653ecc262cfccdbf75309a3a28f0ca4be0bf6d9f18e1fcec14f
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Server:
+      - Cowboy
+      Date:
+      - Tue, 04 Feb 2020 09:41:42 GMT
+      Connection:
+      - keep-alive
+      X-Frame-Options:
+      - SAMEORIGIN
+      X-Xss-Protection:
+      - 1; mode=block
+      X-Content-Type-Options:
+      - nosniff
+      Content-Type:
+      - application/json; charset=utf-8
+      Vary:
+      - Accept-Encoding, Origin
+      Etag:
+      - W/"cb2ebdf17360b412337450c993fdd843"
+      Cache-Control:
+      - max-age=0, private, must-revalidate
+      X-Request-Id:
+      - 07c433b2-57f5-48cf-861f-c4a98c16f02f
+      X-Runtime:
+      - '0.060832'
+      Transfer-Encoding:
+      - chunked
+      Via:
+      - 1.1 vegur
+    body:
+      encoding: UTF-8
+      string: '{"code":0,"message":"Success","data":{"user":{"id":1776,"name":"John12e34312
+        Doe123212e42","images":{"small_url":"https://showoff-rails-react-api-production.s3.amazonaws.com/users/images/missing/missing.jpg","medium_url":"https://showoff-rails-react-api-production.s3.amazonaws.com/users/images/missing/missing.jpg","large_url":"https://showoff-rails-react-api-production.s3.amazonaws.com/users/images/missing/missing.jpg","original_url":"https://showoff-rails-react-api-production.s3.amazonaws.com/users/images/missing/missing.jpg"},"first_name":"John12e34312","last_name":"Doe123212e42","date_of_birth":null,"email":"john.doe123124e22@email.com","active":true}}}'
+    http_version: 
+  recorded_at: Tue, 04 Feb 2020 09:41:42 GMT
+- request:
+    method: get
+    uri: https://showoff-rails-react-production.herokuapp.com/api/v1/users/1776/widgets?client_id=277ef29692f9a70d511415dc60592daf4cf2c6f6552d3e1b769924b2f2e2e6fe&client_secret=d6106f26e8ff5b749a606a1fba557f44eb3dca8f48596847770beb9b643ea352
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      Authorization:
+      - Bearer 820e809ca52f3653ecc262cfccdbf75309a3a28f0ca4be0bf6d9f18e1fcec14f
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Server:
+      - Cowboy
+      Date:
+      - Tue, 04 Feb 2020 09:41:42 GMT
+      Connection:
+      - keep-alive
+      X-Frame-Options:
+      - SAMEORIGIN
+      X-Xss-Protection:
+      - 1; mode=block
+      X-Content-Type-Options:
+      - nosniff
+      Content-Type:
+      - application/json; charset=utf-8
+      Vary:
+      - Accept-Encoding, Origin
+      Etag:
+      - W/"4f12fd1e237e823d0d9e970e4ffe7e53"
+      Cache-Control:
+      - max-age=0, private, must-revalidate
+      X-Request-Id:
+      - 839283c0-22f7-48c2-afe5-dfbf9684b3b5
+      X-Runtime:
+      - '0.073305'
+      Transfer-Encoding:
+      - chunked
+      Via:
+      - 1.1 vegur
+    body:
+      encoding: UTF-8
+      string: '{"code":0,"message":"Success","data":{"widgets":[{"id":887,"name":"Test
+        edit Widget","description":"Visible Widget","kind":"visible","user":{"id":1776,"name":"John12e34312
+        Doe123212e42","images":{"small_url":"https://showoff-rails-react-api-production.s3.amazonaws.com/users/images/missing/missing.jpg","medium_url":"https://showoff-rails-react-api-production.s3.amazonaws.com/users/images/missing/missing.jpg","large_url":"https://showoff-rails-react-api-production.s3.amazonaws.com/users/images/missing/missing.jpg","original_url":"https://showoff-rails-react-api-production.s3.amazonaws.com/users/images/missing/missing.jpg"},"first_name":"John12e34312","last_name":"Doe123212e42","date_of_birth":null,"email":"john.doe123124e22@email.com","active":true},"owner":true}]}}'
+    http_version: 
+  recorded_at: Tue, 04 Feb 2020 09:41:43 GMT
+recorded_with: VCR 5.0.0

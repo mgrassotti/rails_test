@@ -17,7 +17,7 @@
             <label for="password">Password</label>
             <%= password_field_tag :password, nil, class: "form-control" %>
           </div>
-          <%= link_to "Still not registered? Please, sign up", "#", "data-dismiss"=>"modal", "data-toggle"=>"modal", "data-target"=>"#signUpModal" %><br>
+          <%= link_to "Still not registered? Please, sign up", "#", "data-dismiss"=>"modal", "data-toggle"=>"modal", "data-target"=>"#signUpModal", id: 'sign-up' %><br>
           <%= link_to "Forgot your password? You can reset it", "#", "data-dismiss"=>"modal", "data-toggle"=>"modal", "data-target"=>"#resetPasswordModal" %>
         </div>
         <div class="modal-footer">

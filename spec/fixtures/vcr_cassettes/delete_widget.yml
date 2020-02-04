@@ -1,0 +1,242 @@
+---
+http_interactions:
+- request:
+    method: get
+    uri: https://showoff-rails-react-production.herokuapp.com/api/v1/users/me
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      Authorization:
+      - Bearer 820e809ca52f3653ecc262cfccdbf75309a3a28f0ca4be0bf6d9f18e1fcec14f
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Server:
+      - Cowboy
+      Date:
+      - Tue, 04 Feb 2020 10:20:55 GMT
+      Connection:
+      - keep-alive
+      X-Frame-Options:
+      - SAMEORIGIN
+      X-Xss-Protection:
+      - 1; mode=block
+      X-Content-Type-Options:
+      - nosniff
+      Content-Type:
+      - application/json; charset=utf-8
+      Vary:
+      - Accept-Encoding, Origin
+      Etag:
+      - W/"cb2ebdf17360b412337450c993fdd843"
+      Cache-Control:
+      - max-age=0, private, must-revalidate
+      X-Request-Id:
+      - de2f9ec7-fe1e-4d65-a16c-002b6949f9c1
+      X-Runtime:
+      - '0.025614'
+      Transfer-Encoding:
+      - chunked
+      Via:
+      - 1.1 vegur
+    body:
+      encoding: UTF-8
+      string: '{"code":0,"message":"Success","data":{"user":{"id":1776,"name":"John12e34312
+        Doe123212e42","images":{"small_url":"https://showoff-rails-react-api-production.s3.amazonaws.com/users/images/missing/missing.jpg","medium_url":"https://showoff-rails-react-api-production.s3.amazonaws.com/users/images/missing/missing.jpg","large_url":"https://showoff-rails-react-api-production.s3.amazonaws.com/users/images/missing/missing.jpg","original_url":"https://showoff-rails-react-api-production.s3.amazonaws.com/users/images/missing/missing.jpg"},"first_name":"John12e34312","last_name":"Doe123212e42","date_of_birth":null,"email":"john.doe123124e22@email.com","active":true}}}'
+    http_version: 
+  recorded_at: Tue, 04 Feb 2020 10:20:56 GMT
+- request:
+    method: get
+    uri: https://showoff-rails-react-production.herokuapp.com/api/v1/users/1776/widgets?client_id=277ef29692f9a70d511415dc60592daf4cf2c6f6552d3e1b769924b2f2e2e6fe&client_secret=d6106f26e8ff5b749a606a1fba557f44eb3dca8f48596847770beb9b643ea352
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      Authorization:
+      - Bearer 820e809ca52f3653ecc262cfccdbf75309a3a28f0ca4be0bf6d9f18e1fcec14f
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Server:
+      - Cowboy
+      Date:
+      - Tue, 04 Feb 2020 10:20:56 GMT
+      Connection:
+      - keep-alive
+      X-Frame-Options:
+      - SAMEORIGIN
+      X-Xss-Protection:
+      - 1; mode=block
+      X-Content-Type-Options:
+      - nosniff
+      Content-Type:
+      - application/json; charset=utf-8
+      Vary:
+      - Accept-Encoding, Origin
+      Etag:
+      - W/"4f12fd1e237e823d0d9e970e4ffe7e53"
+      Cache-Control:
+      - max-age=0, private, must-revalidate
+      X-Request-Id:
+      - d036cb63-5e71-48b7-b858-e3e032ce09ac
+      X-Runtime:
+      - '0.052643'
+      Transfer-Encoding:
+      - chunked
+      Via:
+      - 1.1 vegur
+    body:
+      encoding: UTF-8
+      string: '{"code":0,"message":"Success","data":{"widgets":[{"id":887,"name":"Test
+        edit Widget","description":"Visible Widget","kind":"visible","user":{"id":1776,"name":"John12e34312
+        Doe123212e42","images":{"small_url":"https://showoff-rails-react-api-production.s3.amazonaws.com/users/images/missing/missing.jpg","medium_url":"https://showoff-rails-react-api-production.s3.amazonaws.com/users/images/missing/missing.jpg","large_url":"https://showoff-rails-react-api-production.s3.amazonaws.com/users/images/missing/missing.jpg","original_url":"https://showoff-rails-react-api-production.s3.amazonaws.com/users/images/missing/missing.jpg"},"first_name":"John12e34312","last_name":"Doe123212e42","date_of_birth":null,"email":"john.doe123124e22@email.com","active":true},"owner":true}]}}'
+    http_version: 
+  recorded_at: Tue, 04 Feb 2020 10:20:56 GMT
+- request:
+    method: delete
+    uri: https://showoff-rails-react-production.herokuapp.com/api/v1/widgets/887
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      Authorization:
+      - Bearer 820e809ca52f3653ecc262cfccdbf75309a3a28f0ca4be0bf6d9f18e1fcec14f
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Server:
+      - Cowboy
+      Date:
+      - Tue, 04 Feb 2020 10:20:56 GMT
+      Connection:
+      - keep-alive
+      X-Frame-Options:
+      - SAMEORIGIN
+      X-Xss-Protection:
+      - 1; mode=block
+      X-Content-Type-Options:
+      - nosniff
+      Content-Type:
+      - application/json; charset=utf-8
+      Vary:
+      - Accept-Encoding, Origin
+      Etag:
+      - W/"fb4e86ef409648b4cef2e4727279e7cc"
+      Cache-Control:
+      - max-age=0, private, must-revalidate
+      X-Request-Id:
+      - d3d773a1-4480-4b5c-a93b-4a73669ee7a4
+      X-Runtime:
+      - '0.056818'
+      Transfer-Encoding:
+      - chunked
+      Via:
+      - 1.1 vegur
+    body:
+      encoding: UTF-8
+      string: '{"code":0,"message":"Success","data":{"widget":null}}'
+    http_version: 
+  recorded_at: Tue, 04 Feb 2020 10:20:56 GMT
+- request:
+    method: get
+    uri: https://showoff-rails-react-production.herokuapp.com/api/v1/users/me
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      Authorization:
+      - Bearer 820e809ca52f3653ecc262cfccdbf75309a3a28f0ca4be0bf6d9f18e1fcec14f
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Server:
+      - Cowboy
+      Date:
+      - Tue, 04 Feb 2020 10:20:56 GMT
+      Connection:
+      - keep-alive
+      X-Frame-Options:
+      - SAMEORIGIN
+      X-Xss-Protection:
+      - 1; mode=block
+      X-Content-Type-Options:
+      - nosniff
+      Content-Type:
+      - application/json; charset=utf-8
+      Vary:
+      - Accept-Encoding, Origin
+      Etag:
+      - W/"cb2ebdf17360b412337450c993fdd843"
+      Cache-Control:
+      - max-age=0, private, must-revalidate
+      X-Request-Id:
+      - 23cd6cf6-9d90-4981-adf4-0698b3a55e4c
+      X-Runtime:
+      - '0.021043'
+      Transfer-Encoding:
+      - chunked
+      Via:
+      - 1.1 vegur
+    body:
+      encoding: UTF-8
+      string: '{"code":0,"message":"Success","data":{"user":{"id":1776,"name":"John12e34312
+        Doe123212e42","images":{"small_url":"https://showoff-rails-react-api-production.s3.amazonaws.com/users/images/missing/missing.jpg","medium_url":"https://showoff-rails-react-api-production.s3.amazonaws.com/users/images/missing/missing.jpg","large_url":"https://showoff-rails-react-api-production.s3.amazonaws.com/users/images/missing/missing.jpg","original_url":"https://showoff-rails-react-api-production.s3.amazonaws.com/users/images/missing/missing.jpg"},"first_name":"John12e34312","last_name":"Doe123212e42","date_of_birth":null,"email":"john.doe123124e22@email.com","active":true}}}'
+    http_version: 
+  recorded_at: Tue, 04 Feb 2020 10:20:57 GMT
+- request:
+    method: get
+    uri: https://showoff-rails-react-production.herokuapp.com/api/v1/users/1776/widgets?client_id=277ef29692f9a70d511415dc60592daf4cf2c6f6552d3e1b769924b2f2e2e6fe&client_secret=d6106f26e8ff5b749a606a1fba557f44eb3dca8f48596847770beb9b643ea352
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      Authorization:
+      - Bearer 820e809ca52f3653ecc262cfccdbf75309a3a28f0ca4be0bf6d9f18e1fcec14f
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Server:
+      - Cowboy
+      Date:
+      - Tue, 04 Feb 2020 10:20:56 GMT
+      Connection:
+      - keep-alive
+      X-Frame-Options:
+      - SAMEORIGIN
+      X-Xss-Protection:
+      - 1; mode=block
+      X-Content-Type-Options:
+      - nosniff
+      Content-Type:
+      - application/json; charset=utf-8
+      Vary:
+      - Accept-Encoding, Origin
+      Etag:
+      - W/"b844684a31cc27d5aa01ad3c2352d420"
+      Cache-Control:
+      - max-age=0, private, must-revalidate
+      X-Request-Id:
+      - c967f066-b101-4be6-ba10-0c650539bafd
+      X-Runtime:
+      - '0.020772'
+      Transfer-Encoding:
+      - chunked
+      Via:
+      - 1.1 vegur
+    body:
+      encoding: UTF-8
+      string: '{"code":0,"message":"Success","data":{"widgets":[]}}'
+    http_version: 
+  recorded_at: Tue, 04 Feb 2020 10:20:57 GMT
+recorded_with: VCR 5.0.0
