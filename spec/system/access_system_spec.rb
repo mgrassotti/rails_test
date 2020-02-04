@@ -4,9 +4,9 @@ require 'rails_helper'
 RSpec.describe "Access management", :type => :system do
   let(:user_params){
     {
-      first_name: "John12e34312",
-      last_name: "Doe123212e42",
-      email: "john.doe123124e22@email.com",
+      first_name: "John123456",
+      last_name: "Doe123456",
+      email: "john.doe123456@email.com",
       password: "password"
     }
   }

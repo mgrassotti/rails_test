@@ -3,7 +3,7 @@ class Access < ModelFromApi
   attr_reader :error_message
 
   def token_data
-    Rails.cache.read(email)
+    Rails.cache.read(email).try(:with_indifferent_access)
   end
 
   def token_data=(hash)

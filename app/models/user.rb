@@ -19,7 +19,11 @@ class User < ModelFromApi
   def save
     response = UsersApiClient.create(self)
     if response[:status] == "ok"
-      Access.new.token_data = response[:data]["token"]
+      access = Access.new(email: response[:data]["user"]["email"])
+      access.token_data = response[:data]["token"].merge({
+        expires_at: Time.now + response[:data]["token"]["expires_in"]
+      })
+      access.save
       true
     else
       @error_message = response[:message]
