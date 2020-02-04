@@ -12,14 +12,22 @@ It interacts with an API called `Widgets` and allows the user to:
 
 - `ruby 2.6.5`
 - `rails 5.2.3`
-- `redis` # it's also used to store data needed for application functioning, no database is required
+- `memcached` # used as application data store
 
 ## Getting started
 
 ```
 $ bundle install
+$ rake db:create db:migrate
 $ rails dev:cache # needed to start caching in development
 $ rails s
+```
+
+## Test suite
+
+To run all tests:
+```
+$ bundle exec rspec
 ```
 
 ## Deployment
@@ -29,8 +37,8 @@ It can be easily deployed to Heroku:
 $ heroku create <heroku_app_name>
 $ git push heroku
 $ heroku config:set RAILS_MASTER_KEY=<master-key>
+$ heroku addons:create memcachier:dev # adds the MemCachier add-on
 ```
-Add a the `MemCachier` add-on.
 
 ## Demo version
 
