@@ -18,7 +18,6 @@ It interacts with an API called `Widgets` and allows the user to:
 
 ```
 $ bundle install
-$ rake db:create db:migrate
 $ rails dev:cache # needed to start caching in development
 $ rails s
 ```
