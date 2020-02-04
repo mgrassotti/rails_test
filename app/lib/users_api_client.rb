@@ -24,9 +24,9 @@ class UsersApiClient < ApiClient
   end
 
   def widgets(id, q=nil)
-    params = credentials_params.merge(auth_headers)
-    params = params.merge(query: { term: q }) if q.present?
-    parse_response self.class.get("/#{id}/widgets", params)
+    params = credentials_params.merge(auth_headers).dup
+    params[:query] = params[:query].merge({ term: q }) if q.present?
+    parse_response self.class.get("/me/widgets", params)
   end
 
   def create(user)
